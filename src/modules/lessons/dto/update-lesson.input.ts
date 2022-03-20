@@ -1,8 +1,7 @@
 import { CreateLessonInput } from './create-lesson.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
-
+import { Field, ID, InputType, PartialType } from '@nestjs/graphql';
 @InputType()
 export class UpdateLessonInput extends PartialType(CreateLessonInput) {
-  @Field(() => Int)
-  id: number;
+  @Field(() => ID, { nullable: true })
+  id?: string;
 }

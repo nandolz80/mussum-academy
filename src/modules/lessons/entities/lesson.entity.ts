@@ -1,7 +1,12 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { BaseEntity } from 'src/modules/bases/entities/base.entity';
+import { Content } from 'src/modules/contents/entities/content.entity';
+import { Column, Entity, OneToOne } from 'typeorm';
 
-@ObjectType()
-export class Lesson {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+@Entity()
+export class Lesson extends BaseEntity {
+  @Column()
+  description: string;
+
+  @OneToOne(() => Content, (contents) => contents.lesson)
+  contents: Content[];
 }
